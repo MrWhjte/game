@@ -1,4 +1,4 @@
-# game_su
+# game
 
 A new Flutter game project.
 

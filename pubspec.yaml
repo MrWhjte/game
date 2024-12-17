@@ -36,6 +36,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   flame: ^1.17.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#ffffff" # You can use a color or image for the background
+  adaptive_icon_foreground: "assets/icon/icon.png" # For adaptive icons on Android
 
 dev_dependencies:
   flutter_test:

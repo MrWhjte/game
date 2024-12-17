@@ -28,7 +28,7 @@ class _GameAppState extends State<GameApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: Colors.greenAccent
+        scaffoldBackgroundColor: Colors.green,
       ),
       home: Scaffold(
         // appBar: AppBar(
@@ -38,8 +38,10 @@ class _GameAppState extends State<GameApp> {
           child: Center(
             child: FittedBox(
               child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height:MediaQuery.of(context).size.height,
+                // width: MediaQuery.of(context).size.width,
+                // height:MediaQuery.of(context).size.height,
+                width: gameWidth,
+                height: gameHeight,
                 child: GameWidget(game: game),
               ),
             ),
