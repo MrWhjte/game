@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:game_su/const.dart';
 import 'package:game_su/game/green.dart';
 
@@ -22,6 +22,10 @@ class Player extends SpriteComponent with HasGameRef<Green> {
 
     double newY = position.y + (dt * 400);
 
+    if (newY > -(gameHeight / 4)) {
+      newY = -gameHeight / 4;
+    }
+
     if (newY > (gameRef.size.y / 2) - (size.y / 2)) {
       newY = (gameRef.size.y / 2) - (size.y / 2);
     }
@@ -29,18 +33,10 @@ class Player extends SpriteComponent with HasGameRef<Green> {
   }
 
   void moveX(double deltax) {
-    double newX = position.x+ deltax;
-    double maxX= (gameRef.size.x / 2) - (size.x / 2);
-    double minX=- (gameRef.size.x / 2) +(size.x / 2);
-    newX=newX.clamp(minX, maxX);
-    position.x=newX;
+    double newX = position.x + deltax;
+    double maxX = (gameRef.size.x / 2) - (size.x / 2);
+    double minX = -(gameRef.size.x / 2) + (size.x / 2);
+    newX = newX.clamp(minX, maxX);
+    position.x = newX;
   }
-
-  // void moveY(double deltax) {
-  //   double newY = position.y+ deltax;
-  //   if (newY > (gameRef.size.y / 2) - (size.y / 2)) {
-  //     newY = (gameRef.size.y / 2) - (size.y / 2);
-  //   }
-  //   position.y = newY;
-  // }
 }

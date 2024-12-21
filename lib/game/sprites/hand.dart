@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:game_su/const.dart';
-import 'package:game_su/sprites/player.dart';
+import 'package:flutter/material.dart';
+import 'package:game_su/game/sprites/player.dart';
 
-import '../game/green.dart';
+import '../green.dart';
 
 class Hand extends SpriteComponent with HasGameRef<Green>, CollisionCallbacks {
   @override
@@ -18,11 +16,14 @@ class Hand extends SpriteComponent with HasGameRef<Green>, CollisionCallbacks {
     anchor = Anchor.center;
     add(RectangleHitbox());
   }
+
   @override
   void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other) {
-    if(other is Player && other.position.y >position.y){
-      other.removeFromParent();
+    if (other is Player) {
+      if (other.position.y > (position.y)) {
+        other.removeFromParent();
+      }
+      super.onCollisionStart(intersectionPoints, other);
     }
-    super.onCollisionStart(intersectionPoints, other);
   }
 }

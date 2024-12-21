@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flame/camera.dart';
+import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
@@ -19,17 +19,17 @@ class Green extends FlameGame<GreenWord> with HorizontalDragDetector, KeyboardEv
         );
 
   @override
-  FutureOr<void> onLoad() {
+  Future<FutureOr<void>> onLoad() async {
     // TODO: implement onLoad
     super.onLoad();
+    SpriteComponent background = SpriteComponent()
+      ..sprite = await Sprite.load("background.png")
+      ..size = Vector2(gameWidth, gameHeight);
+      // ..position= Vector2.zero(); // Đặt ảnh bắt đầu từ (0, 0)
+    add(background);
     debugMode=true;
-
-
   }
-  @override
-  Color backgroundColor() {
-    return Colors.green;
-  }
+
 
   @override
   void onHorizontalDragUpdate(DragUpdateInfo info) {
